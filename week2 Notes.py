@@ -1,20 +1,98 @@
-def gcdRecur(a, b):
-    '''
-    a, b: positive integers
+# =======================================================================#
+# =======================================================================#
+# =======================================================================#
 
-    returns: a positive integer, the greatest common divisor of a & b.
-    '''
-    # Your code here
+# =======================================================================#
+# =======================================================================#
+# =======================================================================#
 
-    if b == 0:
-        return a
-    else:
-        print("a is: " + str(a) + " b is: " + str(b))
-        print(" a % b = " + str(a%b))
-        print("will now take gcd("+str(b)+',' + str(a%b)+')')
-        return gcdRecur(b, a % b)
+# =======================================================================#
+# =======================================================================#
+# =======================================================================#
 
-print(gcdRecur(24, 9))
+
+
+# =======================================================================#
+# =======================================================================#
+# =======================================================================#
+# A regular polygon has n number of sides. Each side has length s.
+#
+# The area of a regular polygon is: 0.25*n*s*s / (math.tan(math.pi/n))
+# The perimeter of a polygon is: length of the boundary of the polygon
+# Write a function called polysum that takes 2 arguments, n and s.
+# This function should sum the area and square of the perimeter of the regular polygon.
+# The function returns the sum, rounded to 4 decimal places.
+
+import math
+def polysum(n,s):
+    p = n *s
+    area = 0.25*n*s*s / (math.tan(math.pi/n))
+    return round(area + p*p, 4)
+
+print(polysum(3,5))
+
+
+# # =======================================================================#
+# # =======================================================================#
+# # =======================================================================#
+#
+# # aStr = "ciijlmnoqqrrrswz"
+# # print(aStr)
+# # print(len(aStr))
+# # print((len(aStr)/2))
+# # print(len(aStr)//2)
+# # print(aStr[len(aStr)//2])
+# # print(aStr[:len(aStr)//2])
+#
+#
+# def isIn(char, aStr):
+#     '''
+#     char: a single character
+#     aStr: an alphabetized string
+#
+#     returns: True if char is in aStr; False otherwise
+#     '''
+#     # Your code here
+#
+#     if len(aStr) < 1:
+#         return False
+#     elif len(aStr) == 1 and aStr[len(aStr) // 2] != char:
+#         return False
+#     elif aStr[len(aStr) // 2] == char:
+#         print(aStr[len(aStr) // 2])
+#         return True
+#     elif aStr[len(aStr) // 2] > char:
+#         print("character is smaller than mid letter #: " + str(len(aStr)//2) + aStr[len(aStr)//2] + '. ' + aStr[:len(aStr) // 2])
+#         return isIn(char, aStr[:len(aStr) // 2])
+#     elif aStr[len(aStr) // 2] < char:
+#         print("character is LARGER than mid letter #: " + str(len(aStr)//2) + aStr[len(aStr)//2] + '. ' + aStr[len(aStr) // 2:])
+#         return isIn(char, aStr[len(aStr)//2:])
+#     else:
+#         return False
+#
+# print(isIn('b', 'aaddehjkknnoopqrwwz'))
+
+# =======================================================================#
+# =======================================================================#
+# =======================================================================#
+
+# def gcdRecur(a, b):
+#     '''
+#     a, b: positive integers
+#
+#     returns: a positive integer, the greatest common divisor of a & b.
+#     '''
+#     # Your code here
+#
+#     if b == 0:
+#         return a
+#     else:
+#         print("a is: " + str(a) + " b is: " + str(b))
+#         print(" a % b = " + str(a%b))
+#         print("will now take gcd("+str(b)+',' + str(a%b)+')')
+#         return gcdRecur(b, a % b)
+#
+# print(gcdRecur(24, 9))
 
 # x = 24 % 9
 # print(x)
