@@ -2,34 +2,57 @@
 # The following variables contain values as described below:
 # balance - the outstanding balance on the credit card
 # annualInterestRate - annual interest rate as a decimal+
-balance = 3329
+
+import math
+
+balance = 320000
 annualInterestRate = 0.2
 
-# aprxint = balance * annualInterestRate
-# totalpay = balance + aprxint
 # aprxmonthlypay = int(round(totalpay/12, 0))             #increased divider from 12->14 so we start with a lesser aprxmonthlypay value and adjust from there
-aprxmonthlypay = int(round(balance, 2))                 #removed totalpay, instead just starting with total balance (since not dividing totalpay anymore(for accuracy)
 totaliter = 0
-print(aprxmonthlypay)
-aprxmonthlypay = int(round(aprxmonthlypay, 1))
 
-print(aprxmonthlypay)
+
+monthlyint = annualInterestRate/12
+
+
+LB = balance / 12
+totalint = pow(1+monthlyint,12)
+UB = balance * (pow(1+monthlyint,12)/12)
+aprxmonthlypay = (LB + UB) / 2
+aprxmonthlypay = int(round(aprxmonthlypay, 2))
+
+print('totalint: ' +str(totalint))
+print('STARTING WITH aprxmonthlypay: ' +str(aprxmonthlypay))
+print('LB: ' +str(LB))
+print('UB: ' +str(UB))
+#x = input("are you ready?")
+
+wait = ''
+wait = input('PRESS ENTER TO CONTINUE.')
+
+
 while aprxmonthlypay > 0:
     iterbalance = balance
+
     for i in range(1,13):
         totaliter += 1
         iterbalance -= aprxmonthlypay
         iterbalance = iterbalance + (annualInterestRate / 12) * iterbalance
         print("Month " + str(i) + " remaining balance is = " + "%.2f" % iterbalance)
-    if iterbalance + aprxmonthlypay < 0 or iterbalance < -1.20:         #the 12th month payment will result in a positive balance (ie. the balance is OVERPAID)
-        print("Decreasing monthpay from: " + str(aprxmonthlypay) + " to " + str(aprxmonthlypay - 10))
-        aprxmonthlypay -= 0.1
-    # elif iterbalance - aprxmonthlypay < 0:      #the 12th month payment will result in a negative balance (ie. the balance is JUST paid)
-    #     aprxmonthlypay -= 10
-    #     break
+
+    if iterbalance + aprxmonthlypay < 0 or iterbalance < 1:         #the 12th month payment will result in a negative balance (ie. the balance is OVERPAID) iterbalance + aprxmonthlypay < 0 or
+        UB = aprxmonthlypay
+        aprxmonthlypay = (LB + UB) / 2
+        print("balance is OVERPAID. New monthly pay is: " + str(aprxmonthlypay) + " within range: " + str(LB) + " and " + str(UB))
+
+    elif iterbalance + aprxmonthlypay > 0 or iterbalance > 1:       #UNDERPAID
+        LB = aprxmonthlypay
+        aprxmonthlypay = (LB + UB) / 2
+        print("balance is UNDERPAID. New monthly pay is: " + str(aprxmonthlypay) + " within range: " + str(LB) + " and " + str(UB))
+
     else:
-        #aprxmonthlypay -= 10
         break
+
 if iterbalance > aprxmonthlypay:        #FINAL ADJUSTMENT: IF PAYMENT dropped PAST paying BALANCE in full AND NOW IT IS UNDERPAID, EXECUTES ONLY ONCE
     print("Final adjustment needed, increasing monthpay from: " + str(aprxmonthlypay) + " to " + str(aprxmonthlypay + 10))
     aprxmonthlypay += .10

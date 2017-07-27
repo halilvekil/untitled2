@@ -21,7 +21,7 @@ while aprxmonthlypay > 0:
         iterbalance -= aprxmonthlypay
         iterbalance = iterbalance + (annualInterestRate / 12) * iterbalance
         print("Month " + str(i) + " remaining balance is = " + "%.2f" % iterbalance)
-    if iterbalance + aprxmonthlypay < 0 or iterbalance < -120:         #the 12th month payment will result in a positive balance (ie. the balance is OVERPAID)
+    if iterbalance + aprxmonthlypay < 0 or iterbalance < -120:         #the 12th month payment will result in a NEGATIVE balance (ie. the balance is OVERPAID)
         print("Decreasing monthpay from: " + str(aprxmonthlypay) + " to " + str(aprxmonthlypay - 10))
         aprxmonthlypay -= 10
     # elif iterbalance - aprxmonthlypay < 0:      #the 12th month payment will result in a negative balance (ie. the balance is JUST paid)
