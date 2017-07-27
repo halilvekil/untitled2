@@ -17,9 +17,11 @@ monthlyint = annualInterestRate/12
 
 LB = balance / 12
 totalint = pow(1+monthlyint,12)
-UB = balance * (pow(1+monthlyint,12)/12)
+UB = round(balance * (pow(1+monthlyint,12)/12),2)
+
 aprxmonthlypay = (LB + UB) / 2
-aprxmonthlypay = int(round(aprxmonthlypay, 2))
+print('STARTING WITH aprxmonthlypay: ' +str(aprxmonthlypay))
+aprxmonthlypay = round(aprxmonthlypay, 2)
 
 print('totalint: ' +str(totalint))
 print('STARTING WITH aprxmonthlypay: ' +str(aprxmonthlypay))
@@ -40,17 +42,20 @@ while aprxmonthlypay > 0:
         iterbalance = iterbalance + (annualInterestRate / 12) * iterbalance
         print("Month " + str(i) + " remaining balance is = " + "%.2f" % iterbalance)
 
-    if iterbalance + aprxmonthlypay < 0 or iterbalance < 1:         #the 12th month payment will result in a negative balance (ie. the balance is OVERPAID) iterbalance + aprxmonthlypay < 0 or
+    if iterbalance < -0.01:         #the 12th month payment will result in a negative balance (ie. the balance is OVERPAID) iterbalance + aprxmonthlypay < 0 or
         UB = aprxmonthlypay
         aprxmonthlypay = (LB + UB) / 2
         print("balance is OVERPAID. New monthly pay is: " + str(aprxmonthlypay) + " within range: " + str(LB) + " and " + str(UB))
+        #wait = input('PRESS ENTER TO CONTINUE.')
 
-    elif iterbalance + aprxmonthlypay > 0 or iterbalance > 1:       #UNDERPAID
+    elif iterbalance > 0.01:       #UNDERPAID it1erbalance - aprxmonthlypay > 0 or
         LB = aprxmonthlypay
         aprxmonthlypay = (LB + UB) / 2
         print("balance is UNDERPAID. New monthly pay is: " + str(aprxmonthlypay) + " within range: " + str(LB) + " and " + str(UB))
+        #wait = input('PRESS ENTER TO CONTINUE.')
 
     else:
+        #wait = input('breaking')
         break
 
 if iterbalance > aprxmonthlypay:        #FINAL ADJUSTMENT: IF PAYMENT dropped PAST paying BALANCE in full AND NOW IT IS UNDERPAID, EXECUTES ONLY ONCE

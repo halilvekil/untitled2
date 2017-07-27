@@ -2,7 +2,7 @@
 # The following variables contain values as described below:
 # balance - the outstanding balance on the credit card
 # annualInterestRate - annual interest rate as a decimal+
-balance = 33529
+balance = 4773
 annualInterestRate = 0.2
 
 # aprxint = balance * annualInterestRate
