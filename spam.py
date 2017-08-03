@@ -1,12 +1,29 @@
 ##########TUPLES##########
-x = (1, 2, (3, 'John', 4), 'Hi')
 
-print(x[-1][-1]) # i
-print(x[-1][-2]) # H
-#print(x[-1][2]) # ERROR IndexError: string index out of range
-print(x[0:1]) #(1,)
-print(3 in x)   ## FALSE: DOES NOT RECOGNIZE THE ELEMENTS OF THE TUPLE INSIDE TUPLE X
-x[0] = 8    ## TypeError: 'tuple' object does not support item assignment //TUPLES ARE IMMUTABLE
+def oddTuples(aTup):
+    '''
+    aTup: a tuple
+
+    returns: tuple, every other element of aTup.
+    '''
+    oTup = ()
+    for i in range(0, len(aTup)):
+        if i % 2 == 0:
+            oTup += (aTup[i],)
+        i += 1
+    return oTup
+
+print(oddTuples((15, 1, (77,66,55,44), 15, 9, 15, 88)))
+
+
+# x = (1, 2, (3, 'John', 4), 'Hi')
+#
+# print(x[-1][-1]) # i
+# print(x[-1][-2]) # H
+# #print(x[-1][2]) # ERROR IndexError: string index out of range
+# print(x[0:1]) #(1,)
+# print(3 in x)   ## FALSE: DOES NOT RECOGNIZE THE ELEMENTS OF THE TUPLE INSIDE TUPLE X
+# x[0] = 8    ## TypeError: 'tuple' object does not support item assignment //TUPLES ARE IMMUTABLE
 
 # spam = "7"
 # spam = spam + "0"
