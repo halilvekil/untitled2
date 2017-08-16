@@ -1,3 +1,38 @@
+
+##########LISTS##########
+
+x = [1, 2, [3, 'John', 4], 'Hi']
+print(x[0:1])                       ##!! THIS PRINTS OUT A LIST. NOT AN INT. OUTPUT: [1]
+print(x[:4])
+
+x.remove('Hi')      ##Removes the specified element in the list. If it doesn't exist this will produce an error
+print(x)
+del(x[2])           ##Removes the specified element of the list
+print(x)
+print("Popping (removing last element)")
+x.pop()
+print(x)
+
+q = "sakarya"
+#q = list(q)
+#print("list(q) \n" +q)
+print(q)
+print("***q.split('k')***")
+q = q.split("k")                ##THE STRING HAS BECOME A LIST because of the split operation
+                                ##SPLIT IS A STRING OPERATION, CANNOT BE APPLIED TO LIST
+print(q)
+q = '*'.join(q)
+print("'*'.join(q)")
+print(q)
+
+q = "sakarya"
+q = list(q)
+print(q)
+print(sorted(q))
+print(q.sort(), q)
+print(q.reverse(), q)
+
+
 ##########TUPLES##########
 
 def oddTuples(aTup):
