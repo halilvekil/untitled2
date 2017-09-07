@@ -1,9 +1,33 @@
+##APPLYING A LIST OF FUNCTIONS TO A NUMBER
+
+import math
+def apply_Functions(L,x):
+    for f in L:
+        print (f(x))
+
+apply_Functions([abs,int,math.factorial,math.tan],4)
+
+
 
 ##########LISTS##########
 
 x = [1, 2, [3, 'John', 4], 'Hi']
 print(x[0:1])                       ##!! THIS PRINTS OUT A LIST. NOT AN INT. OUTPUT: [1]
 print(x[:4])
+
+###THE "IS" OPERATOR!!###
+# is operator tests. It tests if two variables point the same object, not if two variables have the same value.
+#
+# From the documentation for the is operator:
+#
+# The operators is and is not test for object identity: x is y is true if and only if x and y are the same object.
+
+##CLONING A LIST##
+cloneX = x[:]
+print("this is the CLONE OF X: " + str(cloneX))
+cloneX[2] = 'new #2'
+print("this is the NEW CLONE OF X: " + str(cloneX))
+print("BUT X REMAINS UNCHANGED: " + str(x))
 
 x.remove('Hi')      ##Removes the specified element in the list. If it doesn't exist this will produce an error
 print(x)
@@ -29,8 +53,10 @@ q = "sakarya"
 q = list(q)
 print(q)
 print(sorted(q))
-print(q.sort(), q)
+print("q.sort()", q.sort(), q)
 print(q.reverse(), q)
+print('here I am')
+print(q.sort)
 
 
 ##########TUPLES##########
