@@ -1,3 +1,20 @@
+animals = {'a': 'aardvark', 'b': 'baboon', 'c': 'coati'}
+animals['d'] = 'donkey'
+for value in animals.items():
+    print(animals.keys(),animals.values())
+
+##USING MAP. A BUILT IN GENERAL PURPOSE mapper OR 'HOPPER'
+map(abs,[1,-2,-4,5,-6,-8,11,-12])
+for element in map(abs,[1,-2,-4,5,-6,-8,11,-12]):
+    print element
+print("STOP")
+
+L1 = [12,43,12,1]
+L2 = [45,3,3,63,6]
+for element in map(min,L1,L2):
+    print element
+print("STOP")
+
 ##APPLYING A LIST OF FUNCTIONS TO A NUMBER
 
 import math
